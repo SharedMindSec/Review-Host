@@ -1,0 +1,77 @@
+{
+  "expo": {
+    "name": "Reformed Watch",
+    "slug": "reformed-app",
+    "owner": "reformedappz",
+    "version": "1.0.30",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "reformedwatch",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#120716"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.reformedwatch.myapp"
+    },
+    "android": {
+      "package": "com.reformedwatch.myapp",
+      "versionCode": 31,
+      "userInterfaceStyle": "dark",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/icon.png",
+        "backgroundColor": "#3d141f"
+      },
+      "permissions": [
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE"
+      ],
+      "blockedPermissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_MEDIA_LOCATION",
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_MEDIA_IMAGES",
+        "android.permission.READ_MEDIA_VIDEO",
+        "android.permission.READ_MEDIA_AUDIO",
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.VIBRATE",
+        "android.permission.POST_NOTIFICATIONS",
+        "android.permission.SCHEDULE_EXACT_ALARM"
+      ],
+      "softwareKeyboardLayoutMode": "resize"
+    },
+    "web": {
+      "favicon": "./assets/images/icon.png"
+    },
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "origin": "https://replit.com/"
+        }
+      ],
+      "expo-font"
+    ],
+    "extra": {
+      "apiBaseUrl": "https://reformed.luls.lol",
+      "privacyPolicyUrl": "https://reformed.luls.lol/privacy",
+      "contactUrl": "https://reformed.luls.lol/contact",
+      "router": {},
+      "eas": {
+        "projectId": "bae8b1bc-1234-4334-bd2a-6f935688236a"
+      }
+    },
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}

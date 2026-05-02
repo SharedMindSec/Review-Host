@@ -1,0 +1,57 @@
+name: Build Reformed Watch TV APK
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "artifacts/reformed-watch-tv/**"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Setup Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install SDK platform & build tools
+        run: sdkmanager "build-tools;34.0.0" "platforms;android-34"
+
+      - name: Make gradlew executable
+        working-directory: artifacts/reformed-watch-tv/android
+        run: chmod +x gradlew
+
+      - name: Build debug APK
+        working-directory: artifacts/reformed-watch-tv/android
+        run: ./gradlew assembleDebug --no-daemon
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: reformed-watch-tv-debug
+          path: artifacts/reformed-watch-tv/android/app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 30
